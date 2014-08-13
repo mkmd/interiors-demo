@@ -1,0 +1,25 @@
+ruby:
+  unless defined? pagination
+    pagination = :more
+  end
+
+  unless defined? type
+    type = :best
+  end
+
+  # todo: why not works?
+  #type = :best unless defined?(type)
+  #pagination = :more unless defined?(pagination)
+
+  #%i[sales_hit campaign new sale]
+
+  # todo: extract html-snippets (f.e. "headline") to "snippets" partials
+
+.offers
+  = partial_with "modules/headline", :type => type
+  .list
+    - 4.times do
+      = partial_with "modules/product-item", :sticker => data.strings.stickers.keys.sample.to_sym
+
+  = partial_with "modules/pagination", :type => pagination
+

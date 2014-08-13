@@ -1,0 +1,9 @@
+ruby:
+  classes = ["property"]
+  if defined? class_list
+    classes += [*class_list].flatten
+  end
+
+div class=classes
+  span.label = name
+  span.value = value

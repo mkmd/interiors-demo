@@ -1,0 +1,106 @@
+
+%product-list
+  .table
+    width: 100%
+
+    tbody td
+      padding-top: 40px
+      padding-bottom: 15px
+      vertical-align: top
+      border-bottom: 1px solid $line-color
+      text-align: center
+
+    td.product-cell, .price-cell, .amount-cell
+      //visibility: collapse
+      text-align: left
+
+    td:nth-of-type(1)
+      padding-left: 20px
+      position: relative
+
+    td:last-child
+      padding-right: 0
+
+    .headline
+      font-size: 1.8em
+
+      a
+        +decorate-link()
+
+    .price, td.quantity-cell, td.discount-cell
+      font-size: 1.6em
+
+    td.discount-cell
+      white-space: nowrap
+      padding-left: 25px
+      padding-right: 25px
+
+    .quantity-cell
+      white-space: nowrap
+
+    .numberbox
+      width: 40px
+      text-align: center
+
+    .numberbox-holder
+      //todo: remove this hack (why not vertical positioning applied?)
+      margin-top: -4px
+
+    .photo
+      display: table-cell
+      vertical-align: top
+      padding-right: 25px
+
+    .information
+      display: table-cell
+      vertical-align: top
+
+    .article
+      margin-top: 20px
+
+    .article, .delivery
+      font-size: 1.2em
+      color: $alter-text-color
+
+    .amount-cell
+      .delete-item
+        margin: 0 55px
+
+      .extras
+        margin-top: 70px
+        text-align: right
+
+    //tfoot
+    .table-total-info
+      td
+        padding-top: 15px
+        padding-bottom: 15px
+        border-bottom: 1px solid $line-color
+
+        & *
+          vertical-align: middle
+
+      td:last-child
+        text-align: right
+
+      .tip
+        font-size: 1.4em
+
+      .price
+        margin: 0 15px
+
+      .splitter
+        font-size: 2.2em
+        margin-right: 15px
+        border-left: 1px solid $line-color
+
+    &.empty
+      tbody
+        td:first-child
+          padding: 65px 0
+          text-align: center
+          color: $empty-text-color
+          font-size: 1.8em
+
+      .table-total-info td
+        text-align: center

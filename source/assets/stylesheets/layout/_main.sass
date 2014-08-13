@@ -1,0 +1,26 @@
+
+body
+  //+debug-border
+  //width: 100%
+  width: $body-width
+  display: table
+  table-layout: fixed
+  margin: 0 auto
+
+//.holder
+//  width: 940px
+//  margin: 0 auto
+
+//http://compass-style.org/reference/compass/layout/sticky_footer/
+html, body
+  height: 100%
+
+header, .content, footer
+  display: table-row
+
+.content
+  height: 100%
+
+  div:first-child .decorated-headline
+    margin-top: 0
+    margin-bottom: 35px

@@ -1,0 +1,92 @@
+phone: 8 800 300 00 33
+phone1: 8 (495) 421 32 32
+phone2: 8 (800) 2000 600
+phone_hint: (бесплатно на территории РФ)
+skype: anta-shtory
+copyright: "&copy; 2010-2014. \"АнТа\" салон штор. Все права защищены."
+social_tip: Присоединяйтесь
+search_tip: Что ищем?
+button_buy: Купить
+button_aply: Применить
+button_continue_shopping: Продолжить покупки
+button_checkout_order: Оформить
+button_pre_order: Заказать
+button_sign_in: Вход
+button_add_to_cart: Добавить в корзину
+button_redirect_to_index: На главную
+pagination_more: Больше предложений
+new_collection: Новая коллекция
+catalogue_search_tip: Найдено %s товаров
+order_tip: Сортировать по
+in_stock: Есть в наличии
+out_of_stock: Нет в наличии
+pre_order: На заказ
+filter: Фильтр
+all_tip: все
+size_plural: Размеры
+preview: Предпросмотр
+save_me_tip: Запомнить меня
+register_tip: Зарегистрироваться
+password_recover_tip: Забыли пароль?
+delivery_tip: Доставка
+required_tip: Обязательные поля
+
+sign_in:
+  title: Вход
+  greeting_message: "Пожалуйста, заполните следующую форму с вашим Логином и паролем:"
+  error_message: "ОШИБКА: <br /> Введите свой логин и пароль."
+  login_label: Логин или E-mail
+  password_label: Пароль
+
+shopping_cart:
+  product: Название товара
+  price: Цена
+  quantity: Кол-во
+  discount: Скидка
+  amount: Сумма
+  summary: "Общая сумма заказа:"
+  empty_message: Корзина пуста
+
+stickers:
+  sales_hit: Хит продаж
+  campaign: Акция
+  new: Новое
+  sale: Распродажа
+
+headlines:
+  best: Лучшие предложения
+  similar: Похожие предложения
+  textile: Ткань
+  model: Модель
+  similar_products: С этими товарами покупают
+  shopping_cart: Корзина
+  product_wishlist: Понравившийся товар
+  products_also_like: Вам также понравится
+
+properties:
+  article: Артикул
+  composition: Состав
+  size_of: Размер
+
+order_by:
+  cost: по цене
+  popular: по популярности
+
+product_filter:
+  options:
+    - title: Размеры штор
+      list:
+        - 180x180
+        - 180x200
+        - 240x180
+        - 240x200
+    - title: Для комнаты
+      list:
+        - гостинной
+        - кухни
+        - спальни
+        - детской
+        - кабинета
+  pictures:
+    - title: Ткань
+    - title: Модель

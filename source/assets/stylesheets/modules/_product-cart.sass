@@ -1,0 +1,85 @@
+.product-cart
+  .product-information
+    width: 100%
+    height: 100%
+    display: table
+    //table-layout: fixed
+
+    .photo
+      display: table-cell
+      vertical-align: top
+      //width: 500px
+      padding-right: 3em
+      height: 100%
+
+    .basic
+      display: table-cell
+      vertical-align: top
+      height: 100%
+      //position: relative
+      //padding-bottom: 150px
+
+    //it's for fix the mozilla bug
+    //todo: see: http://davidwalsh.name/demo/table-cell-position-absolute.php
+    //.basic-holder
+    //  position: relative
+    //  overflow: auto
+    //  height: 100%
+
+    //.information
+    //  max-height: 310px
+    //  overflow: auto
+
+    .extras
+      //position: absolute
+      //left: 0
+      //right: 0
+      //bottom: 0
+      margin-top: 40px
+
+    .article
+      color: $alter-title-color
+      margin-bottom: 15px
+
+    .headline
+      font-size: 2.4em
+      color: $alter-title-color
+      margin-bottom: 15px
+
+    .properties
+      margin-bottom: 30px
+
+    .stock
+      font-size: 1.8em
+      margin-bottom: 15px
+
+    .old-price
+      margin-bottom: 10px
+      font-size: 1.6em
+
+    .actual-price
+      margin-bottom: 10px
+
+      .price
+        display: inline
+
+      .do-buy, .do-pre-order
+        margin-left: 35px
+
+    .size-list
+      margin-bottom: 30px
+
+      // todo: refactor: extract as abstract state-class (one from many types of .property)
+      .value
+        white-space: nowrap
+
+      label
+        font-size: 1em //rem(1.5em)
+
+  .photo-pagination
+    padding-left: 3px
+
+  .photo-preview
+    width: 80px
+    height: 80px
+    //margin-bottom: 3px

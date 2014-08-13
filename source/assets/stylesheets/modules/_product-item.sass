@@ -1,0 +1,62 @@
+
+.product-item
+  position: relative
+  padding-bottom: 85px
+
+  .sticker
+    position: absolute
+    top: 35px
+    right: 0
+
+  .product-photo
+    width: 220px
+    //height: 260px
+    //overflow: hidden
+    position: relative
+
+    .photo-link-label
+      display: none
+
+    .photo-link:hover
+      +alpha(background-color, rgba($overlay-alter-color, .3))
+
+      .photo-link-label
+        +vertical-center()
+        +border-radius(10px)
+        +alpha(background-color, rgba($overlay-alter-color, .75))
+
+        font-size: 1.5em
+        text-align: center
+        color: $alter-text-color
+        border: 1px solid $line-color
+        display: block
+        width: 70%
+        height: 12%
+        padding: 5px
+
+        &:hover
+          +alpha(background-color, rgba($overlay-alter-inverse-color, .7))
+
+          background-color: $overlay-alter-inverse-color
+          cursor: pointer
+
+  .photo-preview
+    width: 20px
+    height: 20px
+
+  .headline a
+    +decorate-link()
+
+  .extras
+    position: absolute
+    bottom: 0
+    width: 100%
+
+  //.price
+  //  margin-top: 20px
+
+  .actions
+    margin-top: 20px
+
+    button
+      margin-right: 15px

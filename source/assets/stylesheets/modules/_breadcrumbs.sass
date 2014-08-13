@@ -1,0 +1,23 @@
+
+.breadcrumbs
+  margin-bottom: 35px
+  font-size: 1.2em
+
+  a
+    +decorate-link()
+
+    margin-right: 5px
+    line-height: 1.5em
+
+    &:last-child:after
+      content: ""
+
+    &:after
+      content: ">"
+      margin-left: 5px
+
+    &:after:hover
+      text-decoration: none
+
+  .title
+    color: $alter-title-color

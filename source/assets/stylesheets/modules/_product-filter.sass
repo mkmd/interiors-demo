@@ -1,0 +1,77 @@
+.product-filter
+
+  //todo (responsive): check px's or em's?
+  $pad-left: 15px
+  $picture-option-width: 45px
+  $picture-option-height: 45px
+  $option-columns-number: 3 //todo: calculate relative to $picture-option-width
+
+  .headline
+    font-size: 1.4em
+    color: $contrast-text-color
+    background-color: $line-color
+    padding: 5px $pad-left
+    text-transform: uppercase
+
+  .filter-section
+    //position: relative
+    padding: 20px $pad-left
+    border-bottom: 1px solid $line-color
+
+    //&:first-child
+    //  padding-top: 0
+
+    .grid-selector
+      width: 410px
+      position: absolute
+      z-index: 2000
+      top: 0
+      left: 0
+      //left: 120%
+
+  .filter-title
+    font-size: 1.6em
+    line-height: 1em
+    color: $alter-title-color
+    margin-bottom: 10px
+    position: relative
+
+    .all
+      font-size: 0.9em
+      position: absolute
+      top: 0.1em
+      right: 0
+      color: $alter-link-color
+      //padding-bottom: 1px
+      border-bottom: 1px solid $alter-link-color
+      cursor: pointer
+
+  .filter-option
+    font-size: 1.4em
+    vertical-align: middle
+    margin-top: 5px
+    position: relative
+
+    //label
+    //  margin-left: 5px
+
+  .filter-option-grid
+    .filter-option
+      font-size: 0
+      margin: 15px 0 0 15px
+
+      +inline-block()
+
+      //todo: extract to mixin
+      &:nth-of-type(3n+1)
+        margin-left: 0
+
+      @for $i from 1 through $option-columns-number
+        &:nth-of-type(#{$i})
+          margin-top: 0
+
+  .filter-actions
+    padding: 20px 0
+
+    input
+      width: 100%

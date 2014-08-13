@@ -1,0 +1,7 @@
+.product-list
+  = partial_with "modules/grid-headline"
+  .list
+    - lorem.randm(3..9).times do
+      = partial_with "modules/product-item", :sticker => data.strings.stickers.keys.sample.to_sym
+
+    = partial_with "modules/pagination", :type => :default

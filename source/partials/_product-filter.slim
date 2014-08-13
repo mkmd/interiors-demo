@@ -1,0 +1,42 @@
+ruby:
+  unless defined? size
+    size = "45x45"
+  end
+
+.product-filter
+  .headline = data.strings.filter
+  = form_tag "", :method => :get, :id => "product-filter" do
+    - data.strings.product_filter.options.each do |option|
+      .filter-section
+        .filter-title = option.title
+        - option.list.each do |value|
+          .filter-option
+            = input_tag :checkbox, :id => value, :class => :checkbox
+            label for=value = value
+
+    - data.strings.product_filter.pictures.each do |option|
+      .filter-section
+        - if [true].sample
+          = partial_with "modules/grid-selector", :title => option.title
+        .filter-title
+          = option.title
+          .all = "(#{data.strings.all_tip})"
+        /- todo: refactor: use checkboxes + labels
+        /- todo: refactor: extract to "picturebox" partial (for textbox, radiobox, checkbox and etc too)
+        /- todo: refactor: make as (grid) partial + javascript widget (with single/multiple option)
+        .filter-option-grid
+          - lorem.randm(1..9).times do |counter|
+            .filter-option
+              - id = "#{str_rand}-#{size}-#{counter.succ}"
+              = input_tag :checkbox, :id => id, :class => :picturebox
+              label for=id = image_tag lorem.image size, :random_color => true
+
+    .filter-actions
+      = submit_tag data.strings.button_apply, :class => "do-apply"
+
+  coffee:
+    $ ->
+      $(".product-filter").productFilter
+        submitHook: (filter) ->
+          console.log filter.value().length
+          return false

@@ -1,0 +1,69 @@
+
+//+box-shadow(rgba(50, 50, 50, 0.6) -1px 2px 3px 0px)
+
+.sticker
+  padding: 4px 10px 9px 5px
+  text-transform: uppercase
+  color: white
+  font-size: 1.2em
+  font-weight: 200
+  z-index: 1000
+
+  $types: (sales_hit: $tango, campaign: $flamingo, new: $pacific-blue, sale: $mantis)
+  @each $type, $color in $types
+    //$path: "icons/stickers/#{$type}.png"
+    $path_rp: "icons/stickers/#{$type}_rp.png"
+
+    &.-#{$type}
+      background: image-url($path_rp) repeat-x
+    //background-color: $color
+
+    //todo: extract to mixin
+    &.-#{$type}:before
+      z-index: 999
+      content: ""
+      display: block
+      position: absolute
+      top: 0
+      left: sprite-width($map-icons, $type) * (-1)
+      background: sprite-url($map-icons)
+      background-position: sprite-position($map-icons, $type)
+
+      +sprite-dimensions($map-icons, $type)
+
+//left: image-width($path) * (-1)
+//width: image-width($path)
+//height: image-height($path)
+//background: image-url($path) no-repeat center
+
+//      +image-dimensions($path)
+
+.sticker-hero
+  display: table
+  position: absolute
+  background: $map-icons
+  z-index: 1000
+  //padding-bottom: 10px
+
+  +sprite($map-icons, hero, true)
+
+  .new-collection
+    display: table-cell
+    vertical-align: middle
+    text-align: center
+    font-family: $alter-font
+    font-weight: 100
+    text-transform: uppercase
+    padding-bottom: 10px
+
+    .year
+      color: $year-color
+      font-size: 1.3em
+
+    .title
+      color: $contrast-text-color
+      font-size: 2.7em
+
+    .subtitle
+      color: $contrast-text-color
+      font-size: 1.2em

@@ -1,0 +1,70 @@
+
+.pagination
+  margin: 35px 0
+  text-align: center
+  position: relative
+
+  .line
+    width: 100%
+    height: 0
+    font-size: 0
+    position: absolute
+    z-index: 9
+    border-top: 1px solid $line-color
+    top: 49%
+
+  .links
+    +inline-block()
+
+    position: relative
+    z-index: 10
+    padding: 0 1em
+    margin: 0
+    background: white
+    font-size: 1.6em
+    white-space: nowrap
+
+
+  //.controls > *
+  //  display: inline-block
+
+  .prev
+    +triangle($line-color, 1.3em, .9em, 270)
+    +inline-block()
+
+    margin-right: 0.8em
+
+  .next
+    +triangle($line-color, 1.3em, .9em, 90)
+    +inline-block()
+
+    margin-left: 0.8em
+
+  a
+    +decorate-link()
+
+  .holder
+    margin: 0 0.2em
+    padding: 0.3em 1.2em
+    border: 1px solid $line-color
+    text-transform: uppercase
+    white-space: normal
+
+    +border-radius(10px)
+    +inline-block()
+
+  a.holder:hover
+    text-decoration: none
+    background-color: $line-color
+
+  .item
+    padding: 0 0.3em
+    //todo: check why appears strange right padding between links
+    display: inline-block
+    margin: 0 0 0 -.25em
+
+    &:last-child
+      margin-right: 0
+
+    &.-active
+      +decorate-link(false)

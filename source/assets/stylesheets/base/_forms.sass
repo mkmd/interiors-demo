@@ -1,0 +1,257 @@
+
+*:focus
+  outline: none
+
+button, .button, input[type="submit"]
+  text-align: center
+  padding: 7px 17px
+  cursor: pointer
+  white-space: nowrap
+
+button, input, .button
+  border: 0
+  background: transparent
+  vertical-align: middle
+
+label
+  color: $base-text-color
+  vertical-align: middle
+
+//todo: refactor: extract to @extend + create shared button style
+.do-buy, .do-sign-in, .do-pre-order, .do-redirect-to-index
+  background-color: $button-background-color
+  color: $button-color
+  font-size: 1.5em //rem
+
+.do-add-to-cart, .do-checkout-order
+  //@extend .do-buy
+  background-color: $button-background-color
+  color: $button-color
+  font-size: 1.4em
+  line-height: 1em
+
+.shopping-cart-add
+  background: sprite-url($map-icons)
+  background-position: sprite-position($map-icons, "shopping-cart")
+  vertical-align: middle
+
+  +sprite-dimensions($map-icons, "shopping-cart")
+
+.favorites-add
+  background: sprite-url($map-icons)
+  background-position: sprite-position($map-icons, "heart")
+  vertical-align: middle
+
+  +sprite-dimensions($map-icons, "heart")
+
+.delete-item
+  color: $delete-color
+  vertical-align: middle
+
+  @extend %box-close
+
+.do-apply, .do-continue-shopping
+  background-color: $button-alter-background-color
+  color: $button-color
+  font-size: 1.4em //rem
+  line-height: 1em
+
+.textbox
+  +border-radius(3px)
+
+  //todo: check rem's or em's?
+  font-size: 1.4em //rem
+  padding: 5px 10px
+  border: 1px solid $line-color
+  color: $base-text-color
+  background-color: $input-background-color
+
+.textbox-hero
+  outline: 1px solid $line-color
+  background-color: $input-background-color
+  font-size: 1.2em
+  padding: .5em 1em
+
+.numberbox
+  font-size: 1em
+  padding: 5px 10px
+  color: $base-text-color
+  background-color: $input-background-color
+
+.numberbox-holder
+  .numberbox-down
+    +triangle($light-arrow-color, .5em, .5em, 270)
+
+    display: inline-block
+    cursor: pointer
+
+  .numberbox-up
+    +triangle($light-arrow-color, .5em, .5em, 90)
+
+    display: inline-block
+    cursor: pointer
+
+.searchbox
+  +sprite-background-position($map-icons, zoom, 3px, 1px)
+  @extend .textbox
+
+  padding-left: 30px
+  background-image: sprite-url($map-icons)
+
+//[type="checkbox"]
+/* Base for label styling */
+.checkbox:not(:checked),
+.checkbox:checked
+  position: absolute
+  left: -9999px
+
+.checkbox:not(:checked) + label,
+.checkbox:checked + label
+  position: relative
+  padding-left: 20px
+  cursor: pointer
+
+/* checkbox aspect */
+.checkbox:not(:checked) + label:before,
+.checkbox:checked + label:before
+  content: ''
+  position: absolute
+  left: 0
+  top: 2px
+  width: 15px
+  height: 15px
+  border: 1px solid $line-color
+  background: $input-background-color
+  +border-radius(3px)
+
+/* checked mark aspect */
+.checkbox:not(:checked) + label:after,
+.checkbox:checked + label:after
+  content: ''
+  position: absolute
+  top: 0
+  left: -1px
+  width: 15px
+  height: 15px
+  background: $map-icons
+
+  +transition(all .2s)
+  +sprite($map-icons, checkbox)
+
+/* checked mark aspect changes */
+.checkbox:not(:checked) + label:after
+  +opacity(0)
+  +transform(scale(0))
+
+.checkbox:checked + label:after
+  +opacity(1)
+  +transform(scale(1))
+
+/* disabled checkbox */
+.checkbox:disabled:not(:checked) + label:before,
+.checkbox:disabled:checked + label:before
+  box-shadow: none
+  //border-color: #bbb
+  background-color: $input-disable-background-color
+
+.checkbox:disabled:checked + label:after
+  color: $input-disable-color
+
+.checkbox:disabled + label
+  color: $input-disable-color
+
+/* accessibility */
+.checkbox:checked:focus + label:before,
+.checkbox:not(:checked):focus + label:before
+  border: 1px dotted $line-color
+
+
+/* Base for label styling */
+.picturebox:not(:checked),
+.picturebox:checked
+  position: absolute
+  left: -9999px
+
+//todo: wrap the inline-block as complete solution with font-size: 0
+.picturebox:not(:checked) + label,
+.picturebox:checked + label
+  position: relative
+  cursor: pointer
+  font-size: 0
+
+  +inline-block()
+
+//todo: refactor: use +contain-active-item
+.picturebox:not(:checked) + label:after,
+.picturebox:checked + label:after
+  content: ""
+  outline: 1px solid $outline-color
+
+  +transition(all .2s)
+  +stretch-all(-2px)
+
+/* checked mark aspect changes */
+.picturebox:not(:checked) + label:after
+  +opacity(0)
+  //transform: scale(0)
+  //+transform(scale(0))
+
+.picturebox + label:hover:after,
+.picturebox:checked + label:after
+  +opacity(1)
+  //transform: scale(1)
+  //+transform(scale(1))
+
+/* disabled checkbox */
+.picturebox:disabled:not(:checked) + label,
+.picturebox:disabled:checked + label
+  +opacity(0.3)
+
+.picturebox:disabled:checked + label:after,
+.picturebox:disabled + label:after
+  outline: 1px dotted $line-color
+
+/* accessibility */
+.picturebox:checked:focus + label:after,
+.picturebox:not(:checked):focus + label:after
+  outline: 1px dotted $line-color
+
+//todo: see: http://quirksmode.org/css/selectors/hover.html
+//todo: see: http://www.quirksmode.org/css/quirksmode.html
+
+/* Base for label styling */
+.flatbox:not(:checked),
+.flatbox:checked
+  position: absolute
+  left: -9999px
+
+.flatbox:not(:checked) + label,
+.flatbox:checked + label
+  position: relative
+  padding: .3em 1.0em
+  cursor: pointer
+  font-size: 0
+
+  +inline-block()
+
+.flatbox + label
+  outline: 1px solid $line-color
+  margin-left: 1px
+  //border-right: none
+
+//.flatbox + label:last-child
+//  border-right: 1px solid $line-color
+
+.flatbox+ label:hover,
+.flatbox:checked + label
+  background-color: $line-color
+
+/* disabled checkbox */
+.flatbox:disabled:not(:checked) + label,
+.flatbox:disabled:checked + label
+  +opacity(0.3)
+
+/* accessibility */
+.flatbox:checked:focus + label,
+.flatbox:not(:checked):focus + label
+  outline: 1px dotted $line-color

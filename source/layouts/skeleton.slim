@@ -1,0 +1,34 @@
+ruby:
+  title = [current_page.data.title, "Anta"].compact.join ' | '
+  belongs_to = [current_page.data.belongs_to, page_classes.to_s.split(" ").pop]
+doctype 5
+html
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"
+
+    title = title
+    meta name="keywords" content="anta"
+    meta name="author" content=""
+
+    /link rel="icon" type="image/png" href=file_path("favicon.png")
+
+    /![if lte IE 8]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"
+      = javascript_include_tag "//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"
+      = javascript_include_tag "//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"
+      = javascript_include_tag "//cdn.jsdelivr.net/respond/1.3.0/respond.min.js"
+
+    = stylesheet_link_tag :styles
+    = stylesheet_link_tag "vendor/styles"
+    = javascript_include_tag :vendor
+
+    javascript:
+
+  body class=belongs_to
+    == yield
+
+    = partial_with "modules/sign-in-popup" if [true, false].sample
+
+    = javascript_include_tag :app

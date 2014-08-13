@@ -1,0 +1,43 @@
+
+.fancybox-wrap
+  //.fancybox-overlay
+
+  .fancybox-skin
+    background-color: $base-background-color
+
+    +border-radius(0)
+
+    .fancybox-close
+      top: 10px
+      right: 10px
+      background: none
+
+      font-size: rem(2em)
+      line-height: rem(1.5em)
+      font-weight: bold
+      cursor: pointer
+      text-decoration: none
+      width: auto
+      height: auto
+
+      &:before
+        content: "\2715" //"×"
+        display: block
+
+  .fancybox-nav
+    width: 40px
+    height: 40px
+
+    span
+      display: none
+
+  .fancybox-prev
+    +vertical-center(left, -100px)
+    @extend %arrow-prev-base
+
+  .fancybox-next
+    +vertical-center(right, -100px)
+    @extend %arrow-next-base
+
+//todo: check why not works @extend
+//    %extend %box-close

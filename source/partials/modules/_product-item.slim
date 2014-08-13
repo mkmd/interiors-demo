@@ -1,0 +1,18 @@
+ruby:
+  #data.sitemap.extras.find{|item| item.id == "product" }
+
+/coffee:
+
+.product-item
+  .product-photo
+    = partial_with "modules/photo", :sticker => sticker, :overlay => data.strings.preview
+
+  h2.headline = link_to lorem.words((1..5).to_a.sample).capitalize, "/product.html"
+  p.description = lorem.words(lorem.randm(5..20)).capitalize
+
+  .extras
+    div.price = money lorem.randm(100..500_000)
+    .actions
+      button.do-buy = data.strings.button_buy
+      button.shopping-cart-add
+      button.favorites-add

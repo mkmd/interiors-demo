@@ -1,0 +1,15 @@
+social:
+  - id: facebook
+    url: http://facebook.com
+
+  - id: vk
+    url: http://vk.com
+
+  - id: twitter
+    url: http://twitter.com
+
+  - id: google
+    url: http://plus.google.com
+
+  - id: youtube
+    url: http://youtube.com

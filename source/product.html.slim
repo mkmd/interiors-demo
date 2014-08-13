@@ -1,0 +1,8 @@
+---
+layout: default
+belongs_to: catalogue
+---
+
+= partial_with :breadcrumbs
+= partial_with "product-cart"
+= partial_with :offers, :type => :similar, :pagination => :default

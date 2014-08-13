@@ -1,0 +1,12 @@
+= wrap_layout :skeleton do
+
+  = partial_with :header
+
+  section.content
+    aside.column1
+      = yield_content :column1
+
+    section.column2
+      = yield_content :column2
+
+  = partial_with :footer

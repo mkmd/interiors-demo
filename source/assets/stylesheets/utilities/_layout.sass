@@ -1,0 +1,27 @@
+
+//=grid-balanced($gr, $gut: 0.2, $pseudoclass: 'of-type')
+//  +add-grid($gr)
+//  +add-gutter($gut)
+//  $number-of-columns: if(length($gr) > 1, length($gr), $gr)
+//
+//  @for $column from 1 through $number-of-columns
+//    &:nth-#{$pseudoclass}( #{$number-of-columns}n + #{$column} )
+//      +grid-span(1, $column)
+//
+//      @if ($column == 1)
+//        clear: both
+////        +clearfix
+
+//%colon3
+//  $grids: 2 5 3
+//  $columns: left, center, right
+//
+////  @extend %clearfix
+//
+//  padding: 35px
+//
+//  @for $i from 1 through length($columns)
+//    $column: nth($columns, $i)
+//    .#{$column}
+//      +grid-span(1, $i)
+

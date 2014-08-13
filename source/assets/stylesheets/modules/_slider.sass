@@ -1,0 +1,32 @@
+
+.slider
+  .decorated-headline
+    margin-bottom: 15px
+
+  .pagination
+    margin-top: 15px
+
+  .slider-carousel
+    +contain-active-item(".slider-item-active", ".slider-item")
+
+    //overflow: visible !important
+
+  .slider-slide
+    width: 100%
+    top: 3px !important
+    //left: 3px !important
+
+  .slider-item
+    +inline-block()
+
+    position: relative
+    //margin: 0 1.5em 0.6em 0
+    margin: 0 1.68% 1.68% 0
+    font-size: 0
+    cursor: pointer
+
+    &:last-child
+      margin-right: 0
+
+    &:first-child
+      margin-left: 3px

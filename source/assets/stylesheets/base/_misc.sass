@@ -1,0 +1,39 @@
+
+.user-favorites
+  +simple-icon($map-icons, heart-large, 1.2em, white)
+  +reset-link()
+
+.user-shopping-cart
+  +simple-icon($map-icons, shopping-cart-large, 1.2em, $price-color, 5px 0 0 7px)
+  +reset-link()
+
+.box-close
+  @extend %box-close
+
+.property
+  font-size: 1.6em
+  margin-bottom: 5px
+  //display: table
+  //width: 100%
+
+  .label
+    //display: table-cell
+    //vertical-align: top
+    vertical-align: middle
+    padding-right: .5em
+
+    &:after
+      content: ":"
+
+  .value
+    vertical-align: middle
+    width: 99%
+
+  //-strict
+  &.-box
+    display: table
+    width: 100%
+
+    .label, .value
+      display: table-cell
+      //vertical-align: top

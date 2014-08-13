@@ -1,0 +1,126 @@
+
+//=paragraph($align: left, $pad: 10px)
+//  display: block
+//  text-align: $align
+//  margin-bottom: $pad
+//
+//=brief($align: left, $mini: false)
+//  color: $grey-chateau
+//
+//  @if $mini
+//    font-size: $micro
+//
+//  +paragraph($align)
+//
+//=link-accent($enable: true, $strong: false)
+//  $normal: if($enable, underline, none)
+//  $hover: if($strong, $normal, if(not($enable), underline, none))
+//
+//  &, &:link, &:visited
+//    text-decoration: $normal
+//
+//  &:hover, &:visited:hover, &:active
+//    text-decoration: $hover
+//
+//=hyperlink($primary, $secondary: null)
+//  @if $secondary == null
+//    @if type-of($primary) == 'color'
+//      @if lightness($primary) < 50%
+//        $secondary: lighten($primary, 30%)
+//      @else
+//        $secondary: darken($primary, 30%)
+//    @else
+//      $secondary: $primary
+//
+//  a, a:link, a:visited
+//    color: $primary
+//
+//  a:hover, a:visited:hover, a:active
+//    color: $secondary
+//
+//=hypertext($text, $link: null, $link-secondary: null)
+//  color: $text
+//
+//  +hyperlink(inherit)
+
+//+font-face(fontello, font-files('fontello.woff', 'fontello.ttf', 'fontello.svg'), 'fontello.eot', normal, normal)
+//
+//%font-icon
+//  font-family: "fontello"
+//  font-style: normal
+//  font-weight: normal
+//  speak: none
+//
+//  display: inline-block
+//  text-decoration: inherit
+//  //width: 1em
+//  text-align: center
+//  /* opacity: .8 */
+//
+//  /* For safety - reset parent styles, that can break glyph codes*/
+//  font-variant: normal
+//  text-transform: none
+//
+//  /* fix buttons height, for twitter bootstrap */
+//  line-height: 1em
+//
+//  &, &:hover
+//    text-decoration: none
+//
+//  // Removing child elements
+//  & > *
+//    display: none
+
+//todo: refactor: pass any other properties
+=decorate-link($inverse-to-browser-default: true)
+  &
+    text-decoration: if($inverse-to-browser-default, none, underline)
+
+    &:hover
+      text-decoration: if($inverse-to-browser-default, underline, none)
+
+//normalize
+=reset-link($underline: false)
+  &
+    text-decoration: if($underline, underline, none)
+
+    &:hover
+      text-decoration: if($underline, underline, none)
+
+=heading-sizes($max-size: 30px, $min-size: 16px, $max-heading: 1, $min-heading: 6, $ratio: 1, $debug: false)
+
+  $number-of-headings: $min-heading - $max-heading + 1
+  $scaled-size-of-max-heading: modular-scale($number-of-headings - 1, $min-size, $ratio)
+  $coefficient: 0
+
+  @if $ratio != 1
+    @if modular-scale(1, 1, octave()) != 2
+      @warn "Using heading-sizes with a ratio other than 1 requires modular-scale."
+    $coefficient: ($scaled-size-of-max-heading - $min-size) / ($max-size - $min-size)
+
+
+  @for $i from 1 through $number-of-headings
+
+    $heading: $number-of-headings - $i + $max-heading
+
+    h#{$heading}
+
+      $size: foo
+
+      @if $ratio == 1
+        $size-without-min: $max-size - $min-size
+        $increment: $size-without-min / ($number-of-headings - 1)
+        $current-increment: $increment * ($i - 1)
+        $size: $min-size + $current-increment
+
+      @else
+        $scaled-size: modular-scale($i - 1, $min-size, $ratio)
+        $difference: $scaled-size - $min-size
+        $shrinked-difference: $difference / $coefficient
+        $size: $min-size + $shrinked-difference
+
+      font-size: $size
+
+      @if $debug
+        &:after
+          content: "#{$size}"

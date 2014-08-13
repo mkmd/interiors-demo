@@ -1,0 +1,66 @@
+
+//$list: a, b, c, d e f, g, h i, j
+//body:before
+//  content: debug($list)
+
+@function debug($list, $type: false, $root: true)
+  $line-break: "\A "
+  $result: if($type, "(list:#length($list))[ "+ $line-break, "[ " + $line-break)
+  $space: if($root, "", "  ")
+
+  @if length($list) == 1
+    @return if($type, quote("(#{type-of($list)}) #{$list}"), quote($list))
+
+  @each $item in $list 
+    $result: $result + "  "
+
+    @if length($item) > 1 
+      $result: $result + debug($item, $type, false)
+    @else
+      $result: if($type, $result + $space + "(" + type-of($item) + ") " + $item, $result + $space + $item)
+
+    @if index($list, $item) != length($list) 
+      $result: $result + ", " + $line-break
+  
+  $result: $result + $line-break + $space + "]"
+  @return quote($result)
+
+=debug($list)
+  body:before
+    content: debug($list)                     !important
+
+    display: block                            !important
+    margin: 1em                               !important
+    padding: .5em                             !important
+
+    background: #EFEFEF                       !important
+    border: 1px solid #DDD                    !important
+    border-radius: .2em                       !important
+
+    color: #333                               !important
+    font: .75em/1.5 "Courier New", monospace  !important
+    text-shadow: 0 1px white                  !important
+    white-space: pre-wrap                     !important
+
+=debug-border()
+  outline: 1px solid #f00
+
+//// @private
+//@function ppm_debug($prefix, $vars...)
+//  $result: ''
+//  @each $item in $vars
+//    $type: type-of($item)
+//    @if 'list' == $type
+//      @debug 'list of #length($item) values:'
+//      $result: ppm_debug('  - ', $item...)
+//    @else
+//      @debug '#$prefix(#$type)  #$item'
+//
+//  @return ""
+//
+//// Display clean debug
+//@mixin ppm_debug($vars...)
+//  $result: ppm_debug('', $vars...)
+//
+//.page
+//  @include ppm_debug(a #BADA55 42, false yummy, 14px, "gloubiboulga")

@@ -1,0 +1,16 @@
+
+.offers
+  .list
+    +clearfix
+
+  .product-item
+    //display: table-cell
+
+    +reset-grid(4, .09)
+    +thumb-span()
+    //+grid-balanced(4, .1)
+
+    @extend %product-item-line-fix
+
+  .pagination
+    clear: both

@@ -1,0 +1,34 @@
+ruby:
+  photos_number = (1..5).to_a.sample
+
+  unless defined? size
+    size = "220x260"
+  end
+
+  unless defined? overlay
+    overlay = nil
+  end
+
+  if defined? only
+    take_photo = only == :photo
+    take_pagination = not(take_photo)
+  else
+    take_photo = take_pagination = true
+  end
+
+  #"data-photo-src" => image_src
+  #todo: how-to: link_to with block
+
+- if defined?(sticker) and not sticker.blank?
+  .sticker class=("-#{sticker}") = data.strings.stickers[sticker]
+
+- if take_photo
+  .photo-carousel
+    a.photo-link href=(overlay ? "#" : "product") class=(overlay ? "" : "")
+      - if overlay
+        span.photo-link-label.product-preview data-url="/product-preview/" = overlay
+
+    - photos_number.times do
+      = image_tag lorem.image(size, :random_color => true), :class => "photo-slide"
+- if take_pagination
+  ul.photo-pagination

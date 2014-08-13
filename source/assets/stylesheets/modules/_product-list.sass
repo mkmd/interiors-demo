@@ -1,0 +1,28 @@
+
+.product-list
+  .list
+    +clearfix
+
+  $number-of-columns: 3
+
+  .product-item
+    +reset-grid($number-of-columns, .09)
+    +thumb-span()
+
+    //min-height: 485px
+    padding-top: 20px
+    border-top: 1px solid $line-color
+
+    @for $i from 1 through 3
+      &:nth-of-type(#{$i})
+        border: none
+        padding-top: 0
+
+    // todo: extract as mixin "text-fix-lines"
+    //a
+    //  display: block
+
+    @extend %product-item-line-fix
+
+  .pagination
+    clear: both

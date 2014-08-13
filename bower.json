@@ -1,0 +1,17 @@
+{
+  "name":         "anta",
+  "dependencies": {
+    "jquery":                "<2.0",
+    "jquery-ui":             "<1.11.0",
+    "jquery.mousewheel":     "",
+    "jquery-outside-events": "",
+    "jquery-cycle2":         "",
+    "select2":               "",
+    "modernizr":             "",
+    "tinysort":              "",
+    "elementQuery":          "",
+    "fancybox":              "",
+    "jquery.inputmask":      "",
+    "jqamp-ui-spinner":      "git://github.com/flamewave/jqamp-ui-spinner.git"
+  }
+}

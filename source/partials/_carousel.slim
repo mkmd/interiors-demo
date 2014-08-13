@@ -1,0 +1,35 @@
+ruby:
+  classes = ["carousel"]
+  if defined? class_list
+    classes += [*class_list].flatten
+  end
+
+  unless defined? size
+    size = "940x600"
+  end
+
+  #todo: use "500px.com"-analogue instead lorem.image (custom wrapper is needed)
+
+div class=classes
+  - if defined? sticker
+    = partial_with "modules/sticker-hero", :type => sticker
+
+  .carousel-slides
+    .carousel-prev
+    .carousel-next
+
+    .carousel-slide
+      = image_tag "demo/image1.jpg"
+      .label
+        h2.title = lorem.sentence
+        p.description = lorem.paragraph
+    - 5.times do
+      .carousel-slide
+        = image_tag lorem.image size, :random_color => true
+        .label
+          h2.title = lorem.sentence
+          p.description = lorem.paragraph
+
+  .carousel-pagination
+  - if block_given?
+    = yield

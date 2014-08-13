@@ -1,0 +1,27 @@
+footer
+  = partial_with :information
+  .holder
+    .information
+      .contacts
+        .phones
+          .primary = data.strings.phone1
+          .secondary = data.strings.phone2
+
+        .skype = data.strings.skype
+
+      .secondary-navigation
+        - data.sitemap.secondary.each do |menu|
+          .slice
+            h5.title = menu[0]
+            nav.links
+              - menu[1].each do |item|
+                = link_to item.title, item.id
+
+    .extras
+      .social
+        span.tip = data.strings.social_tip
+        - data.blocks.social.each do |item|
+          = link_to "", item.url, :class => item.id, :target => "_blank"
+
+      .copyright = data.strings.copyright
+

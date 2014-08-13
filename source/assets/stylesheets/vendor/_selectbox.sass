@@ -1,0 +1,28 @@
+
+.selectbox.select2-container
+  font-size: rem(1.4em)
+
+  .select2-choice, .select2-arrow
+    +border-radius(0)
+
+  .select2-choice
+    height: auto
+
+  &.select2-container-active
+    .select2-choice, .select2-choices
+      //border: none
+      border: 1px solid $line-color
+      +box-shadow(none)
+
+.select2-drop
+  font-size: rem(1.4em)
+  //transition: all .2s
+
+  +border-radius(0)
+
+  .select2-results .select2-highlighted
+    background-color: $selectbox-highlite
+
+  &.select2-drop-active
+    //border: none
+    border: 1px solid $line-color

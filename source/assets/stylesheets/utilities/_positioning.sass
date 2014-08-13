@@ -1,0 +1,76 @@
+
+=apply-to-sides($property, $size, $directions)
+  @each $direction in $directions
+    #{$property}-#{$direction}: $size
+
+=margin-but-last($size: 2em, $direction: right)
+  &:not(:last-child)
+    margin-#{$direction}: $size
+
+=margin-but-first($size: 2em, $direction: right)
+  &:not(:first-child)
+    margin-#{$direction}: $size
+
+=margin($size: 2em, $directions: left right top bottom)
+  +apply-to-sides(margin, $size, $directions)
+
+=padding($size: 2em, $directions: left right top bottom)
+  +apply-to-sides(padding, $size, $directions)
+
+=border($size: 2em, $directions: left right top bottom)
+  +apply-to-sides(border, $size, $directions)
+
+//=center-block($table: false)
+//
+//  @if $table
+//    display: table
+//  @else
+//    display: block
+//
+//  margin-left: auto
+//  margin-right: auto
+//
+
+=stretch-all($offset: 0)
+  +stretch($offset, $offset, $offset, $offset, true)
+
+//todo: where is compass stretch mixin?
+=stretch($offset-top:0, $offset-right:0, $offset-bottom:0, $offset-left:0, $non-strict: false)
+  position: absolute
+
+  @if $offset-top or $non-strict
+    top: $offset-top
+
+  @if $offset-bottom or $non-strict
+    bottom: $offset-bottom
+
+  @if $offset-left or $non-strict
+    left: $offset-left
+
+  @if $offset-right or $non-strict
+    right: $offset-right
+
+=box-rotate($degrees)
+  -webkit-transform: rotate(#{$degrees}deg)
+  -moz-transform: rotate(#{$degrees}deg)
+  -ms-transform: rotate(#{$degrees}deg)
+  -o-transform: rotate(#{$degrees}deg)
+  transform: rotate(#{$degrees}deg)
+
+  filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})"
+  zoom: 1
+
+=one-row-left-right()
+  display: table
+  width: 100%
+
+  & .one //& *:first-child
+    display: table-cell
+    text-align: left
+    vertical-align: middle
+
+  & .two //& *:last-child
+    display: table-cell
+    text-align: right
+    vertical-align: middle

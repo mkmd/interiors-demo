@@ -1,0 +1,13 @@
+ruby:
+  unless defined?(title)
+    title = ""
+  end
+
+  if defined?(type)
+    title = data.strings.headlines[type]
+  end
+
+.decorated-headline
+  - if title
+    h3.title = title
+  .line

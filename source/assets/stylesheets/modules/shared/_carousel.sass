@@ -1,0 +1,33 @@
+
+.carousel
+  position: relative
+
+  .sticker-hero
+    top: 40px
+    right: 40px
+
+  .carousel-prev
+    +vertical-center(left, 20px)
+    @extend %arrow-prev-base
+
+  .carousel-next
+    +vertical-center(right, 20px)
+    @extend %arrow-next-base
+
+
+  .carousel-pagination
+    margin-top: -40px
+    position: relative
+    z-index: 200
+    text-align: center
+
+    .carousel-pagination-item
+      background: $map-icons
+      margin: 0 5px
+      cursor: pointer
+
+      +inline-block()
+      +sprite($map-icons, option, true)
+
+      &.-active
+        +sprite($map-icons, option-active, true)

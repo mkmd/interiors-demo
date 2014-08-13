@@ -1,0 +1,9 @@
+.sticker-hero
+  div class=type.to_s.dasherize
+    - case type
+    - when :new_collection
+      - title, subtitle = *data.strings.new_collection.split(" ")
+      .year = lorem.randm 2010..2015
+      .title = title
+      .subtitle = subtitle
+

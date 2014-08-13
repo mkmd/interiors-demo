@@ -1,0 +1,113 @@
+
+$option-columns: 4
+
+.grid-selector
+  //visibility: hidden
+  display: none
+  background-color: $base-background-color
+  padding: 30px
+
+  +opacity(0)
+  // todo: check the transition opacity
+  //+transition(all 1s)
+  +box-shadow(rgba($shadow-color, .6) 0 0 5px)
+
+  &.-visible
+    +opacity(1)
+
+  &:before
+    +vertical-center(left, 0)
+    //+triangle($base-background-color, 20px, 10px, 270)
+    //+text-shadow(rgba($shadow-color, .3) -2px 0 3px)
+    //+inline-block()
+    //
+    //content: "\25C0"
+    //color: $contrast-text-color
+    //font-size: rem(2em)
+    //height: rem(1em)
+
+    +box-rotate(45)
+    +box-shadow(rgba($shadow-color, .3) -2px 2px 3px)
+
+    content: ""
+    z-index: 1999
+    left: -7px
+    width: 15px
+    height: 15px
+    background-color: $base-background-color
+
+  .box-close
+    position: absolute
+    top: 10px
+    right: 10px
+
+  .decorated-headline
+    margin: 0
+
+    .title
+      font-size: rem(2.2em)
+
+  .pagination
+    margin: 0
+
+    .links
+      max-width: 80%
+
+    .holder
+      max-width: 70%
+
+  .grid-selector-content
+    +clearfix
+    //+contain-active-item($hover-item-class: "label")
+
+    position: relative
+    margin: 15px 0
+    //white-space: nowrap
+
+    .grid-option
+      float: left
+      font-size: 0
+      margin: 10px 0 0 8px
+
+      +inline-block()
+
+      &:nth-of-type(4n+1)
+        margin-left: 0
+        clear: both
+
+      @for $i from 1 through $option-columns
+        &:nth-of-type(#{$i})
+          margin-top: 0
+
+    //input[type="checkbox"]
+    //  position: absolute
+    //  left: -9999px
+    //
+    //label
+    //  +inline-block()
+    //
+    //  font-size: 0
+    //  cursor: pointer
+    //  position: relative
+    //  margin: 10px 0 0 10px
+    //
+    //  &:nth-of-type(4n+1)
+    //    margin-left: 0
+    //
+    //  @for $i from 1 through $columns
+    //    &:nth-of-type(#{$i})
+    //      margin-top: 0
+
+      //todo: how-to: break new line from css
+      //todo: see: http://stackoverflow.com/questions/2703601/how-to-give-line-break-from-css-without-using-br
+      //&:nth-of-type(4n+4):after
+      //  content: "\A"
+      //  white-space: pre
+
+      //&:nth-of-type(2n+6)
+        //float: left
+
+  //&:nth-of-type(2n+4):after
+      //  content: "\000A"
+      //  display: block
+

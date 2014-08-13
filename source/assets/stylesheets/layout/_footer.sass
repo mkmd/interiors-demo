@@ -1,0 +1,124 @@
+
+footer
+  .shop-information
+    //+debug-border
+    //+grid-background()
+    //+background-grid(3, .2)
+
+    +clearfix
+
+    .column
+      +reset-grid(3, .2)
+      +thumb-span()
+      //+grid-balanced(3, .2)
+
+    a
+      +decorate-link()
+
+    $images: russia delivery credit-cart
+    @for $i from 1 through 3
+      $path: nth($images, $i) + ".jpg"
+
+      .column:nth-of-type(n+#{$i})
+        background-image: image-url($path)
+        background-repeat: no-repeat
+        background-position: top center
+
+      a:nth-of-type(n+#{$i})
+        display: block
+
+        font-size: em(18px)
+        text-align: center
+        padding-top: image-height($path)
+
+    //+layout(3)
+      .column
+        +grid-span(1)
+
+    //+save-grid
+    //+reset-grid(3, 0.1)
+    //
+    //.column
+    //  +float-span(1)
+    //
+    //+restore-grid
+
+  $contacts-width: 200px
+  $pad: 60px
+
+  .holder
+    background-color: $footer-holder
+    padding: 20px $pad/2 10px $pad/2
+    margin-bottom: 50px
+
+    +clearfix
+
+  .information
+    +clearfix
+
+  .extras
+    +clearfix
+
+    position: relative
+
+  .contacts
+    float: right
+    max-width: $contacts-width
+    font-size: 2em
+
+    //todo: refactor: use extending
+    .phones
+      +with-icon($map-icons, "phone-large")
+        top: 0.5em
+
+    .skype
+      margin-top: 20px
+      +with-icon($map-icons, "skype")
+
+  .secondary-navigation
+    float: left
+    max-width: 70% //$body-width - $contacts-width - $pad
+
+    +clearfix
+
+    .slice
+      font-size: 1.4em
+
+      +reset-grid(3, .1)
+      +thumb-span()
+
+      .title
+        text-transform: uppercase
+        margin-bottom: rem(1.1em)
+
+      .links a
+        display: block
+        margin-bottom: rem(0.9em)
+
+        @extend %alter-link
+
+  .social
+    float: right
+
+    .tip
+      text-transform: uppercase
+      font-size: 1.2em
+
+      +inline-block()
+
+      &:after
+        content: ":"
+
+    //todo: load list from data.blocks.social
+    $icons: facebook vk twitter google youtube
+    @each $icon in $icons
+      .#{$icon}
+        margin-left: 10px
+        background: $map-icons
+        +inline-block()
+        +sprite($map-icons, $icon, true)
+
+  .copyright
+    position: absolute
+    bottom: 0
+

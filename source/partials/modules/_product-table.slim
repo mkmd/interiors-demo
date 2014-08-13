@@ -1,0 +1,87 @@
+ruby:
+  unless defined?(show_footer) #.nil?
+    show_footer = false
+  end
+
+  unless defined?(rows)
+    rows = 3
+  end
+
+  unless defined?(show_extras)
+    show_extras = true
+  end
+
+  #unless defined?(has_items)
+  #  has_items = true
+  #end
+
+  #has_items = if has_items.nil? || has_items.empty?
+
+table.table class=(rows.zero? ? "empty" : "")
+  /caption
+  /col
+  /colgroup.product-cell
+  /colgroup.price-cell
+  /colgroup.quantity-cell
+  /colgroup.discount-cell
+  /colgroup.amount-cell
+  thead
+    tr
+      th.product-cell = data.strings.shopping_cart.product
+      th.price-cell = data.strings.shopping_cart.price
+      th.quantity-cell = data.strings.shopping_cart.quantity
+      th.discount-cell = data.strings.shopping_cart.discount
+      th.amount-cell = data.strings.shopping_cart.amount
+
+  - if show_footer
+    tfoot
+      tr.table-total-info
+        - if rows.zero?
+          td colspan=5
+            button.do-redirect-to-index = data.strings.button_redirect_to_index
+        - else
+          td
+            button.do-continue-shopping = data.strings.button_continue_shopping
+          td colspan="4"
+            span.tip = data.strings.shopping_cart.summary
+            span.price = money lorem.randm(100..500_000)
+            span.splitter
+            button.do-checkout-order = data.strings.button_checkout_order
+
+  tbody
+    - if rows.zero?
+      tr
+        td colspan=5 = data.strings.shopping_cart.empty_message
+    - else
+      - rows.times do
+        tr
+          td.product-cell
+            .photo
+              = link_to (image_tag lorem.image "90x90", :random_color => true), "#"
+            .information
+              h2.headline = link_to lorem.sentence, "#"
+              = partial_with "modules/property",
+                    :name => data.strings.properties.article,
+                    :value => lorem.randm(1_000_000..9_999_999),
+                    :class_list => :article
+
+              = partial_with "modules/property",
+                    :name => data.strings.delivery_tip,
+                    :value => lorem.words(3),
+                    :class_list => :delivery
+
+          td.price-cell
+            span.price = money lorem.randm(100..500_000)
+
+          td.quantity-cell = input_tag :textbox, :value => lorem.randm(1..99), :class => :numberbox
+
+          td.discount-cell = "%s %" % lorem.randm(1..100)
+
+          td.amount-cell
+            .base
+              span.price = money lorem.randm(100..500_000)
+              i.delete-item
+
+            - if show_extras
+              .extras
+                button.do-add-to-cart = data.strings.button_add_to_cart

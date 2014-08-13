@@ -1,0 +1,18 @@
+ruby:
+  type = nil unless defined? type
+  #%i[more default].include?(type)
+
+.pagination
+  .links
+    = link_to "", "#", :class => "prev"
+
+    - if type == :more
+      = link_to data.strings.pagination_more, "#", :class => "holder"
+
+    - elsif type == :default
+      .holder
+        - (3..15).to_a.sample.times do |i|
+          = link_to i+1, "", :class => "item"
+
+    = link_to "", "", :class => "next"
+  .line

@@ -1,0 +1,118 @@
+//miscellaneous
+
+//.clearfix:before,
+//.clearfix:after {
+//  content: ".";
+//  display: block;
+//  height: 0;
+//  overflow: hidden;
+//}
+//.clearfix:after {
+//  clear: both;
+//}
+//.clearfix {
+//  zoom: 1; /* IE < 8 */
+//}
+
+=property($value, $properties)
+  @each $property in $properties
+    #{$property}: $value
+
+//todo: see "compass-rgbapng"
+=alpha($attribute, $color, $background: null)
+  &
+    //$rgba: rgba($color, $alpha)
+    //$ie-hex-str: ie-hex-str($rgba)
+
+    //$solid-color: rgba($color)
+    //$ie-color: transparent\9
+
+    $percent: alpha($color) * 100%
+    $opaque: opacify($color, 1)
+    $solid-color: if($background, mix($opaque, $background, $percent), $opaque)
+
+    #{$attribute}: $solid-color
+    #{$attribute}: $color
+
+    //+opacity(alpha($color))
+    +filter-gradient($color, $color)
+    //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str})
+
+    @if $legacy-support-for-ie6 or $legacy-support-for-ie7 or $legacy-support-for-ie8
+      #{$attribute}: transparent\9
+      zoom: 1
+
+      // set filter as none for IE9+, because IE9+ support RGBa
+      \:root &
+        filter: none\0/IE9
+
+  &:nth-child(n)
+    filter: none
+
+=simple-icon($sprite-map, $sprite-name, $text-size: null, $text-color: null, $text-padding: null)
+  background: $sprite-map
+  text-align: center
+
+  @if $text-size
+    font-size: rem($text-size)
+
+  @if $text-color
+    color: $text-color
+
+  @if $text-padding
+    padding: $text-padding
+  @else
+    $text-padding: sprite-height($map-icons, heart-large)/2 - px($text-size)/2 - 2px
+    padding-top: $text-padding
+
+  +inline-block()
+  +sprite($sprite-map, $sprite-name, true)
+
+  @content
+
+=with-icon($sprite-map, $sprite-name)
+  position: relative
+  padding-left: 0.5em
+
+  &:before
+    content: "" //attr(data-content)
+    display: block
+    position: absolute
+    top: 0
+    left: sprite_width($sprite-map, $sprite-name) * (-1)
+    background: $sprite-map
+    //background-position: sprite-position()
+    +sprite($sprite-map, $sprite-name, true)
+    @content
+
+//todo: try to use "vertical-center" and "absolute-center" mixins from toolkit gem
+=vertical-center($horizontal-position: center, $offset: 0)
+  position: absolute
+  top: 0
+  bottom: 0
+
+  @if $horizontal-position == left
+    left: $offset
+  @else if $horizontal-position == right
+    right: $offset
+  @else if $horizontal-position == center
+    left: $offset
+    right: $offset
+
+  margin: if($horizontal-position == center, auto, auto 0)
+
+=contain-active-item($active-item-class: ".-active", $hover-item-class: null)
+  %active
+    +stretch-all(-2px)
+
+    content: ""
+    outline: 1px solid $outline-color
+
+  @if $hover-item-class
+    & #{$hover-item-class}:hover:after
+      @extend %active
+
+  & #{$active-item-class}:after
+    @extend %active
+
+

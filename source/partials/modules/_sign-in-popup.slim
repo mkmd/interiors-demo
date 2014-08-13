@@ -1,0 +1,27 @@
+ruby:
+  has_error = [true, false].sample
+
+#sign-in-popup class=(has_error ? "-validation-error" : "")
+  = partial_with "modules/headline", :title => data.strings.sign_in.title
+  = form_tag "", :method => :post do
+    .message = data.strings.sign_in[has_error ? "error_message" : "greeting_message"]
+
+    .row
+      = text_field_tag :login, :value => "", :class => "textbox-hero required", :placeholder => data.strings.sign_in.login_label
+
+    .row
+      /.textbox-hero.required
+      /= label_tag data.strings.sign_in.password_label
+      = password_field_tag :login, :value => "", :class => "textbox-hero required", :placeholder => data.strings.sign_in.password_label
+
+    .row.extras
+      = input_tag :checkbox, :id => "save_me", :class => "checkbox"
+      label for="save_me" = data.strings.save_me_tip
+      .tip
+        button.do-sign-in = data.strings.button_sign_in
+
+    .actions
+      = link_to data.strings.register_tip, "#"
+      = "|"
+      = link_to data.strings.password_recover_tip, "#"
+

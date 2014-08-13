@@ -1,0 +1,46 @@
+ruby:
+  #parent, children, siblings
+  #sitemap.resources.group_by {|p| p.data["category"] }.each
+  #sitemap.where(:tags.include => "homepage").order_by(:priority).limit(10)
+
+header
+  = link_to data.sitemap.root.id, :class => "logo" do
+    = image_tag "logo.png"
+
+  .extras
+    .user-information
+      a.user-favorites href=(url_for "wishlist.html") = lorem.randm 1..10
+      a.shopping-cart href=(url_for "shopping-cart.html")
+        i.user-shopping-cart = lorem.randm 1..10
+        span.price = money lorem.randm(100..500_000)
+
+    .contacts
+      .phone = data.strings.phone
+      .tip = data.strings.phone_hint
+
+  .special
+    nav.additional-navigation
+      - data.sitemap.additional.each do |item|
+        - has_popup = [true, false].sample && item.id == "sign-in"
+        = link_to item.title + "<i class='splitter'></i>", has_popup ? "#sign-in-popup" : "/#{item.id}.html",
+          :class => :item,
+          :id => has_popup ? item.id : ""
+
+    nav.advertisement-navigation
+      - data.sitemap.advertisement.each do |item|
+        = link_to item.title, "#{item.id}.html", :class => :item
+
+  .main-navigation
+    = form_tag data.sitemap.extras.find{|item| item.id == "search" }.id, :method => :get, :class => "search" do
+      = text_field_tag :query, :value => "",
+        :id => "query", :class => "searchbox",
+        :required => true, :placeholder => data.strings.search_tip,
+        :tabindex => 1
+        = submit_tag ""
+
+    nav.links
+      - data.sitemap.main.each do |item|
+        = link_to item.title + "<i class='splitter'></i>", "/#{item.id}.html", :class => :item
+
+  - if block_given?
+    = yield

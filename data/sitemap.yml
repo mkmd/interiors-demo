@@ -1,0 +1,125 @@
+root:
+  id: /
+  title: Главная
+
+main:
+  - id: jalousie
+    title: Шторы
+    layout: catalogue
+
+  - id: cornices
+    title: Карнизы
+    layout: catalogue
+
+  - id: accessories
+    title: Аксессуары
+    layout: catalogue
+
+  - id: campaigns
+    title: Акции
+
+  - id: textiles
+    title: Ткани
+    layout: catalogue
+
+  - id: studio
+    title: Ателье
+
+  - id: portfolio
+    title: Портфолио
+
+  - id: show-room
+    title: Шоу-рум
+
+secondary:
+  Информация:
+    - id: delivery-payment
+      title: Оплата и доставка
+
+    - id: portfolio
+      title: Портфолио
+
+    - id: show-room
+      title: Шоу-рум
+
+    - id: about
+      title: О нас
+
+    - id: contacts
+      title: Контакты
+
+    - id: sitemap
+      title: Карта сайта
+
+  Каталог:
+    - id: jalousie
+      title: Шторы
+      layout: catalogue
+
+    - id: cornices
+      title: Карнизы
+      layout: catalogue
+
+    - id: accessories
+      title: Аксессуары
+      layout: catalogue
+
+    - id: campaigns
+      title: Акции
+
+    - id: textiles
+      title: Ткани
+      layout: catalogue
+
+    - id: studio
+      title: Ателье
+
+  Акции:
+    - id: campaign1
+      title: Комплект Зимний за 1 551 руб.
+
+    - id: campaign2
+      title: Комплект Праздничный за 1 855 руб.
+
+    - id: campaign3
+      title: Комплект Дачный за 799 руб.
+
+additional:
+  - id: callme
+    title: Перезвоните мне
+
+  - id: contacts
+    title: Контакты
+
+  - id: delivery-payment
+    title: Доставка и оплата
+
+  - id: sign-in
+    title: Войти
+
+advertisement:
+  - id: bestsellers
+    title: Хиты продаж
+
+  - id: new-collection
+    title: Новая коллекция
+
+  - id: month-bestsellers
+    title: Товар месяца
+
+shop_information:
+  - id: delivery-russia
+    title: Доставка по всей России
+
+  - id: delivery
+    title: Бесплатная доставка
+
+  - id: credit-cart-payment
+    title: Оплата банковскими картами
+
+extras:
+  - id: search
+    title: Поиск
+
+  - id: product
+    title: 1234567

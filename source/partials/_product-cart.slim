@@ -1,0 +1,77 @@
+ruby:
+  article = lorem.randm 1_000_000..9_999_999
+
+  unless defined? sticker
+    sticker = nil
+  end
+
+  unless defined? state
+    state = nil
+  end
+
+  unless defined? main_photo_size
+    main_photo_size = "460x460"
+  end
+
+  unless defined? slider_photo_size
+    slider_photo_size = "90x90"
+  end
+
+  in_stock = [true, false].sample
+  in_stock_tip = data.strings[in_stock ? "in_stock" : "out_of_stock"]
+
+.product-cart
+  = form_tag "", :method => :get, :id => "product-cart" do
+    .product-information
+      .photo
+        = partial_with "modules/photo", :size => main_photo_size, :only => :photo, :sticker => sticker
+
+      .basic
+        /.basic-holder
+        /  .information
+        = partial_with "modules/property", :name => data.strings.properties.article, :value => article, :class_list => :article
+
+        h1.headline = lorem.sentence
+
+        .properties
+          = partial_with "modules/property", :name => data.strings.properties.composition, :value => lorem.sentence, :class_list => :size
+          = partial_with "modules/property", :name => data.strings.properties.size_of, :value => lorem.sentence, :class_list => :size
+
+        - if state == :pre_order
+          .stock class=("-pre-order") = data.strings.pre_order
+        - else
+          .stock class=(in_stock ? "-in-stock" : "-out-of-stock") = in_stock_tip
+
+        - if [true, false].sample
+          .old-price = price lorem.randm 1_000..500_000
+
+        .actual-price
+          .price = price lorem.randm 1_000..500_000
+          - if state == :pre_order
+            button.do-pre-order = data.strings.button_pre_order
+          - else
+            button.do-buy = data.strings.button_buy
+
+        .extras
+          .size-list
+            ruby:
+              # todo: extract to partial
+              value = []
+              lorem.randm(1..4).times do |counter|
+                size = "#{lorem.randm(100..300)}x#{lorem.randm(100..300)}"
+                #:checkbox
+                value << input_tag(:radio, :checked => counter.zero?, :id => size, :name => "size-list", :class => :flatbox)
+                value << "<label for=\"#{size}\"#{counter.zero? ? " class=\"-active\"" : ""}>#{size}</label>"
+              end
+            = partial_with "modules/property", :name => data.strings.size_plural, :value => value.join, :class_list => "-box"
+
+          = partial_with "modules/photo", :only => :pagination
+
+    = partial_with :slider, :type => :textile, :class_list => "textile-selector", :size => slider_photo_size
+    = partial_with :slider, :type => :model, :class_list => "model-selector", :size => slider_photo_size
+
+  coffee:
+    $ ->
+      $("form#product-cart").bind "submit", -> false
+      $(".product-cart .do-buy").click ->
+        console.log $("form#product-cart input:checked").length

@@ -1,0 +1,10 @@
+---
+layout: two-columns
+belongs_to: catalogue
+---
+
+= content_for :column1 do
+  = partial_with "product-filter"
+
+= content_for :column2 do
+  = partial_with "product-list"

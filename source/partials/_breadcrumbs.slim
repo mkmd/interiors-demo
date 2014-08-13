@@ -1,0 +1,6 @@
+.breadcrumbs
+  = link_to data.sitemap.root.title, data.sitemap.root.id
+  - lorem.randm(1..5).times do
+    = link_to lorem.words(lorem.randm(1..10)).capitalize, data.sitemap.main.sample.id
+  - if [true, false].sample
+    span.title = lorem.words(rand 10).capitalize

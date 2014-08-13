@@ -1,0 +1,7 @@
+
+.shopping-cart
+  = partial_with "modules/headline", :title => data.strings.headlines.shopping_cart
+  = partial_with "modules/product-table",
+    :show_footer => true,
+    :show_extras => false,
+    :rows => [0, 2].sample

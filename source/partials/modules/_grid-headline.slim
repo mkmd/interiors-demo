@@ -1,0 +1,15 @@
+ruby:
+  #p current_page.methods
+  current_item = data.sitemap.main.find{|item| item.id == current_page.path.gsub(".html", "") }
+
+.grid-headline
+  - if current_item
+    h1.title
+      = current_item.title
+      span.tip
+        i.splitter = "/"
+        = data.strings.catalogue_search_tip % [lorem.randm(1..2000)]
+
+  .controls
+    span.tip = data.strings.order_tip
+    = select_tag :order_by, :options => data.strings.order_by.invert, :selected => :popular, :class => :selectbox

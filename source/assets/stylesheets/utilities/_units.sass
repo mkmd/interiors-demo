@@ -1,0 +1,32 @@
+
+@function strip-units($number)
+  @return $number / ($number * 0 + 1)
+
+@function em($px, $base: 10)
+  @return (strip-units($px) / $base) + 0em
+
+@function px($em, $base: 10)
+  @return (strip-units($em) * $base) + 0px
+
+//http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+@function rem($value, $base: 10)
+  //$px : ()
+  $rem: ""
+
+  //@each $value in $values
+  @if $value == 0 or $value == auto
+    //$px : append($px , $value)
+    $rem: $value
+  @else
+    $unit: unit($value)
+    $val: strip-units($value)
+
+    @if $unit == "px"
+      //$px : append($px,  $value)
+      $rem: $val / $base + rem
+
+    @if $unit == "rem" or $unit == "em"
+      //$px : append($px,  ($val * $base + px))
+      $rem: $val + rem
+
+  @return $rem
